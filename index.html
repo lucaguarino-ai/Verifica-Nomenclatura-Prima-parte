@@ -53,66 +53,138 @@
     .mini-table th{background:#e6f7e6;color:#005f00}
     .mini-table td:first-child{font-size:12px;width:34%}
 
+    /* Domande e input testuali (più corti e stretti, maxLength 30) */
+    .question-block{margin-bottom:16px}
+    .q-title{margin-bottom:6px;font-size:19px;line-height:1.25}
+    input.answer-field{
+      width: min(100%, 520px);   /* più stretta */
+      font-size: 17px;           /* un filo più piccola */
+      padding: 10px 12px;        /* più bassa (altezza) */
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+    @media (max-width:600px){
+      input.answer-field{width:100%}
+    }
+
+    /* Builder (slot leggermente più grandi e più vicini ai + / →) */
     .builder-wrap{margin-top:10px;border:1px dashed #66cc66;border-radius:12px;padding:12px;background:#f6fff6}
-    .formula{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:46px;justify-content:center}
+    .formula{
+      display:flex;flex-wrap:wrap;
+      gap:4px; /* avvicinati */
+      align-items:center;min-height:42px;justify-content:center
+    }
     .pair{display:inline-flex;align-items:center;gap:2px}
-    .slot,.static{display:inline-flex;align-items:center;min-height:40px;border-radius:8px;font-size:20px}
-    .slot{min-width:37px;padding:5px 9px;border:2px solid var(--line);background:#fff;cursor:text;white-space:nowrap}
-    .slot.coef{min-width:1.65ch;width:auto;max-width:none;padding:0 2px;justify-content:center;text-align:center}
+    .slot,.static{
+      display:inline-flex;align-items:center;
+      min-height:38px;
+      border-radius:8px;
+      font-size:20px;
+    }
+    .slot{
+      min-width:36px;
+      padding:5px 8px;
+      border:2px solid var(--line);
+      background:#fff;cursor:text;white-space:nowrap
+    }
+    .slot.coef{
+      min-width:1.45ch;
+      width:auto;max-width:none;
+      padding:0 2px;
+      justify-content:center;text-align:center
+    }
     .slot.empty{background:#eef9ee}
     .slot.active{outline:3px solid var(--brand);background:#eaffea}
     .slot[contenteditable="true"]{caret-color:#006600}
-    .static{padding:0 6px;color:#004d00;font-weight:700}
-    .static.arrow{font-size:24px}
+    .static{padding:0 5px;color:#004d00;font-weight:700}
+    .static.arrow{font-size:22px}
 
-    /* Console */
+    /* Console compatta a due livelli */
+    .kbd-dock{margin-top:8px}
     .kbd-section{margin-top:8px;border-top:1px solid #99cc99;padding-top:8px}
-    .kbd-section h4{margin:4px 0;font-size:14px;color:#006600}
-    .kbd.one-line{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:2px}
-    .kbd{display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:6px;margin-top:6px}
-    .kbd.equal{grid-template-columns:repeat(auto-fit,minmax(54px,1fr))}
-    .kbd.equal button{padding:10px;font-size:19px}
-    .kbd.equal .sup,.kbd.equal .sub{font-size:19px;line-height:1}
-    .kbd button{margin:0;padding:10px 8px;border-radius:10px;background:var(--chip);color:var(--ink);border:1px solid var(--line);font-weight:700;font-size:16px}
-    .kbd button:active{transform:translateY(1px)}
-    .kbd.tools{display:grid;grid-template-columns:repeat(5,minmax(90px,auto));gap:6px;margin-top:8px}
-    .kbd.tools button{padding:10px 6px;font-size:14px}
+    .kbd-title{margin:0 0 6px;font-size:14px;color:#006600;font-weight:700}
+    .kbd-rows{display:flex;flex-direction:column;gap:6px}
+    .kbd-row{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .kbd-btn{margin:0;padding:8px 8px;border-radius:10px;background:var(--chip);color:var(--ink);border:1px solid var(--line);font-weight:700;font-size:14px;flex:0 0 auto}
+    .kbd-btn:active{transform:translateY(1px)}
+    .kbd-btn.tool{font-size:13px;padding:8px 10px}
 
-    .question-block{margin-bottom:16px}
-    .q-title{margin-bottom:6px;font-size:19px;line-height:1.25}
-    input.answer-field{width:100%;font-size:17px;text-transform:uppercase;padding:12px;border:2px solid var(--line);border-radius:10px}
+    /* Tasti N.O. e indici (già maggiorati nel passaggio precedente) */
+    .kbd-btn.no{font-size:20px;padding:12px 13px}
+    .kbd-btn.sub{font-size:20px;padding:12px 13px}
 
-    .actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
-    @media (min-width:600px){ .actions{grid-template-columns:1fr 1fr} }
-
-    /* Modale PIN */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;padding:16px;z-index:1000}
-    .modal.open{display:flex}
-    .dialog{background:#fff;border-radius:16px;border:1px solid var(--line);max-width:380px;width:100%;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-    .dialog h3{margin:0 0 8px}
-    .row{display:flex;gap:8px;align-items:center}
-    .row input{flex:1 1 auto;padding:12px;border:1px solid var(--line);border-radius:10px;font-size:18px;letter-spacing:4px;text-align:center}
-    .row button{white-space:nowrap}
-    .help{font-size:13px;color:#2c662d;margin-top:6px}
-
-    .teacher-only{display:none}
-
-    /* Toggle mini-tabelle per domanda (solo mobile) */
-    .mini-toggle{margin-top:8px}
-    .mini-btn{background:#e1f5e1;color:var(--ink);border:1px solid var(--line);padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;width:100%}
-    .mini-panel{display:none;margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;max-height:45vh;overflow:auto}
-    .mini-panel.open{display:block}
-    @media(min-width:1025px){.mini-toggle{display:none}}
-
-    /* Console sticky su mobile + scroll orizzontale */
+    /* Console sticky su mobile */
     @media (max-width: 720px){
-      .builder-wrap{padding-bottom:96px}
+      .builder-wrap{padding-bottom:110px}
       .kbd-dock{position:sticky;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);padding:8px;box-shadow:0 -6px 12px rgba(0,0,0,.08);z-index:50;border-bottom-left-radius:12px;border-bottom-right-radius:12px}
-      .kbd-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-      .kbd,.kbd.equal,.kbd.tools{display:inline-flex;gap:6px;margin-top:6px}
-      .kbd button,.kbd.tools button{flex:0 0 auto}
-      .kbd-section{border-top:none;padding-top:0;margin-top:6px}
     }
+
+    /* Mini-tabelle per domanda: visibili solo su desktop */
+    @media (min-width:1025px){
+      .mini-toggle, .mini-panel { display: none !important; }
+    }
+
+    /* Modale PIN centrata e compatta */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.35);
+  z-index: 9999;
+  padding: 16px;
+}
+.modal.open{ display: flex; }
+
+.modal .dialog{
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.18);
+  width: 100%;
+  max-width: 300px;   /* più piccola */
+  padding: 10px 12px; /* ridotto */
+}
+
+.modal .row{
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.modal input#pinInput{
+  flex: 1 1 auto;
+  padding: 8px 10px;        /* più piccolo */
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  font-size: 16px;          /* ridotto da 18px */
+  width: 100%;
+}
+.modal button#pinLoginBtn{
+  white-space: nowrap;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.modal .help{
+  margin-top: 6px;
+  font-size: 13px;
+  color: #335533;
+}
+
+/* Ancora più compatta su smartphone stretti */
+@media (max-width: 480px) {
+  .modal .dialog {
+    max-width: 260px;
+    padding: 8px 10px;
+  }
+  .modal input#pinInput {
+    font-size: 15px;
+    padding: 7px 8px;
+  }
+}
+
   </style>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -183,7 +255,7 @@
     <div class="list" id="studentList"></div>
 
     <!-- Area docente -->
-    <div class="teacher-only" id="teacherPanel">
+    <div class="teacher-only" id="teacherPanel" style="display:none;">
       <div style="display:flex;align-items:center;gap:10px;margin:14px 0 6px">
         <h3 style="margin:0">Dettaglio risposte (docente)</h3>
         <button id="exportPdfBtn" class="btn-secondary">Esporta PDF</button>
@@ -243,83 +315,85 @@
     const msToHMS = ms => { const s=Math.floor(ms/1000); return `${pad2(Math.floor(s/3600))}:${pad2(Math.floor((s%3600)/60))}:${pad2(s%60)}`; };
     let startTime=null,endTime=null,elapsedTimer=null;
 
+    /* ===== Gestione cursore salvato negli slot (inserimento senza tastiera) ===== */
+    function caretOffsetWithin(el){
+      try{
+        const sel = window.getSelection();
+        if(!sel || sel.rangeCount===0) return null;
+        const r = sel.getRangeAt(0);
+        if(!el.contains(r.startContainer)) return null;
+        const pre = document.createRange();
+        pre.selectNodeContents(el);
+        pre.setEnd(r.startContainer, r.startOffset);
+        return pre.toString().length;
+      }catch{ return null }
+    }
+    function setSavedCaret(slot, idx){
+      slot.dataset.caret = String(Math.max(0, idx|0));
+    }
+    function getSavedCaret(slot){
+      const n = Number(slot.dataset.caret);
+      return Number.isFinite(n) ? Math.max(0,n) : (slot.textContent||'').length;
+    }
+
     function ensureCaretInSlot(slot){const sel=window.getSelection();if(!sel||sel.rangeCount===0||!slot.contains(sel.anchorNode))placeCaretAtEnd(slot)}
     function placeCaretAtEnd(el){el.focus();const r=document.createRange();r.selectNodeContents(el);r.collapse(false);const s=window.getSelection();s.removeAllRanges();s.addRange(r)}
     function setCaret(node,offset){const r=document.createRange();r.setStart(node,offset);r.collapse(true);const s=window.getSelection();s.removeAllRanges();s.addRange(r)}
     function previousTextPosition(slot,node){let c=node;while(c&&c!==slot){if(c.previousSibling){c=c.previousSibling;while(c&&c.lastChild)c=c.lastChild; if(c&&c.nodeType===Node.TEXT_NODE){return{node:c,offset:c.nodeValue.length}}}else c=c.parentNode}return null}
 
-    function appendSymbol(sym, wrap){
+    /* Inserimento: usa offset salvato (niente focus tastiera) */
+    function insertAtSavedCaret(sym, wrap){
       const s=getActiveSlot(wrap)||getSlotsInBuilder(wrap)[0]; if(!s) return;
-      s.textContent = (s.textContent||'') + sym;
+      const text = s.textContent || '';
+      const i = getSavedCaret(s);
+      s.textContent = text.slice(0,i) + sym + text.slice(i);
+      setSavedCaret(s, i + sym.length);
       s.classList.remove('empty');
     }
     function softBackspace(wrap){
       const s=getActiveSlot(wrap); if(!s) return;
-      const t=s.textContent||''; s.textContent=t.slice(0,Math.max(0,t.length-1));
+      const t=s.textContent||'';
+      let i=getSavedCaret(s);
+      if(i<=0){ if(t.length===0){s.classList.add('empty');setSavedCaret(s,0);return} i=1 }
+      s.textContent = t.slice(0,i-1) + t.slice(i);
+      setSavedCaret(s, Math.max(0,i-1));
       if((s.textContent||'').trim()==='') s.classList.add('empty');
     }
 
-    function createKeyboardSection(title, symbols, opts = {}) {
-      const { extraClass = '', includeTools = false, contextWrap, oneLine = false, equal = false } = opts;
-      const section = document.createElement('div');
-      section.className = 'kbd-section';
-      const header = document.createElement('h4');
-      header.textContent = title;
-      section.appendChild(header);
-      const gridWrap = document.createElement('div');
-      gridWrap.className = 'kbd-scroll';
-      const grid = document.createElement('div');
-      grid.className = (oneLine ? 'kbd one-line' : 'kbd') + (equal ? ' equal' : '');
-      gridWrap.appendChild(grid);
-      symbols.forEach(sym => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.textContent = sym;
-        if (extraClass) btn.classList.add(extraClass);
-        btn.addEventListener('click', () => appendSymbol(sym, contextWrap));
-        grid.appendChild(btn);
-      });
-      section.appendChild(gridWrap);
-
-      if (includeTools) {
-        const toolsWrap = document.createElement('div');
-        toolsWrap.className = 'kbd-scroll';
-        const tools = document.createElement('div');
-        tools.className = 'kbd tools';
-        [
-          { label: '◀︎', fn: () => moveActive(contextWrap, -1) },
-          { label: '▶︎', fn: () => moveActive(contextWrap, +1) },
-          { label: '⌫', fn: () => softBackspace(contextWrap) },
-          { label: 'Svuota slot', fn: () => clearActiveSlot(contextWrap) },
-          { label: 'Svuota tutto', fn: () => clearAllSlots(contextWrap) }
-        ].forEach(s => {
-          const b = document.createElement('button');
-          b.textContent = s.label;
-          b.addEventListener('click', s.fn);
-          tools.appendChild(b);
-        });
-        toolsWrap.appendChild(tools);
-        section.appendChild(toolsWrap);
-      }
-      return section;
-    }
-
+    /* Helpers builder */
     const getSlotsInBuilder = b => Array.from(b.querySelectorAll('.slot'));
     const getActiveSlot = b => b.querySelector('.slot.active')||getSlotsInBuilder(b)[0]||null;
-    function setActiveSlot(s,preserveCaret){const b=s.closest('.builder-wrap');getSlotsInBuilder(b).forEach(x=>x.classList.remove('active'));s.classList.add('active');if(!preserveCaret)placeCaretAtEnd(s)}
+
+    function setActiveSlot(s,preserveCaret){
+      const b=s.closest('.builder-wrap');
+      getSlotsInBuilder(b).forEach(x=>x.classList.remove('active'));
+      s.classList.add('active');
+      if(!preserveCaret){ /* quando lo studente tocca, acquisisci caret reale */
+        const off = caretOffsetWithin(s);
+        setSavedCaret(s, off ?? (s.textContent||'').length);
+      }
+    }
+
     function insertAtCaret(text,b){const s=getActiveSlot(b);if(!s)return;ensureCaretInSlot(s);const sel=window.getSelection();let r=sel.getRangeAt(0);
       if(r.startContainer.nodeType!==Node.TEXT_NODE){const tn=document.createTextNode('');r.insertNode(tn);setCaret(tn,tn.length);r=sel.getRangeAt(0)}
       if(!r.collapsed)r.deleteContents();const node=r.startContainer,pos=r.startOffset;const chars=Array.from(node.nodeValue||''),add=Array.from(text);
-      chars.splice(pos,0,...add);node.nodeValue=chars.join('');setCaret(node,pos+add.length); if(s.textContent.trim().length>0)s.classList.remove('empty')}
+      chars.splice(pos,0,...add);node.nodeValue=chars.join('');setCaret(node,pos+add.length); setSavedCaret(s, pos+add.length); if(s.textContent.trim().length>0)s.classList.remove('empty')}
+
     function backspaceAtCaret(b){const s=getActiveSlot(b);if(!s)return;ensureCaretInSlot(s);const sel=window.getSelection();let r=sel.getRangeAt(0);
-      if(!r.collapsed){r.deleteContents();return;} if(r.startContainer.nodeType!==Node.TEXT_NODE){const prev=previousTextPosition(s,r.startContainer);
-        if(prev){const t=Array.from(prev.node.nodeValue);if(t.length>0){t.pop();prev.node.nodeValue=t.join('');setCaret(prev.node,t.length)}}}
-      else {const node=r.startContainer,pos=r.startOffset;if(pos>0){const t=Array.from(node.nodeValue);t.splice(pos-1,1);node.nodeValue=t.join('');setCaret(node,pos-1)}
-        else {const prev=previousTextPosition(s,node);if(prev){const t=Array.from(prev.node.nodeValue);if(t.length>0){t.pop();prev.node.nodeValue=t.join('');setCaret(prev.node,t.length)}}}}
+      if(!r.collapsed){r.deleteContents();const off=caretOffsetWithin(s);setSavedCaret(s, off ?? (s.textContent||'').length);return;}
+      if(r.startContainer.nodeType!==Node.TEXT_NODE){const prev=previousTextPosition(s,r.startContainer);
+        if(prev){const t=Array.from(prev.node.nodeValue);if(t.length>0){t.pop();prev.node.nodeValue=t.join('');setCaret(prev.node,t.length);setSavedCaret(s,t.length)}}}
+      else {const node=r.startContainer,pos=r.startOffset;if(pos>0){const t=Array.from(node.nodeValue);t.splice(pos-1,1);node.nodeValue=t.join('');setCaret(node,pos-1);setSavedCaret(s,pos-1)}
+        else {const prev=previousTextPosition(s,node);if(prev){const t=Array.from(prev.node.nodeValue);if(t.length>0){t.pop();prev.node.nodeValue=t.join('');setCaret(prev.node,t.length);setSavedCaret(s,t.length)}}}}
       if(s.textContent.trim().length===0)s.classList.add('empty')}
-    function moveActive(b,dir){const slots=getSlotsInBuilder(b);if(!slots.length)return;const c=getActiveSlot(b)||slots[0];const i=slots.indexOf(c);const n=slots[Math.min(Math.max(i+dir,0),slots.length-1)];if(n)setActiveSlot(n,true)}
-    function clearActiveSlot(b){const s=getActiveSlot(b);if(!s)return;s.textContent='';s.classList.add('empty')}
-    function clearAllSlots(b){getSlotsInBuilder(b).forEach(s=>{s.textContent='';s.classList.add('empty')})}
+
+    function moveActive(b,dir){const slots=getSlotsInBuilder(b);if(!slots.length)return;const c=getActiveSlot(b)||slots[0];const i=slots.indexOf(c);const n=slots[Math.min(Math.max(i+dir,0),slots.length-1)];
+      if(n){ getSlotsInBuilder(b).forEach(x=>x.classList.remove('active')); n.classList.add('active'); /* non focus: caret rimane quello salvato o va a fine */
+        if(n.dataset.caret===undefined) setSavedCaret(n,(n.textContent||'').length);
+      }
+    }
+    function clearActiveSlot(b){const s=getActiveSlot(b);if(!s)return;s.textContent='';s.classList.add('empty');setSavedCaret(s,0)}
+    function clearAllSlots(b){getSlotsInBuilder(b).forEach(s=>{s.textContent='';s.classList.add('empty');setSavedCaret(s,0)})}
     function readBuilderValue(b){const parts=[];b.querySelectorAll('.formula > span').forEach(el=>{if(el.classList.contains('pair')){el.querySelectorAll('.slot').forEach(s=>parts.push(s.textContent))}else{parts.push(el.textContent)}});return parts.join('')}
 
     function createSlot({coef=false}) {
@@ -327,13 +401,87 @@
       slot.className = 'slot empty' + (coef ? ' coef' : '');
       slot.contentEditable = 'true';
       slot.spellcheck = false;
-      slot.addEventListener('focus', () => setActiveSlot(slot, true));
-      slot.addEventListener('click', () => setActiveSlot(slot, true));
+      /* Salva l'offset cursore quando l'utente interagisce */
+      const upd = ()=>{ const off = caretOffsetWithin(slot); if(off!==null) setSavedCaret(slot, off) };
+      slot.addEventListener('focus', () => { setActiveSlot(slot, true); upd(); });
+      slot.addEventListener('click', () => { setActiveSlot(slot, true); upd(); });
+      slot.addEventListener('keyup', upd);
+      slot.addEventListener('mouseup', upd);
       slot.addEventListener('input', () => {
         if (slot.textContent.trim().length > 0) slot.classList.remove('empty');
         else slot.classList.add('empty');
+        /* dopo input metti caret a fine come fallback */
+        const off = caretOffsetWithin(slot);
+        setSavedCaret(slot, off ?? (slot.textContent||'').length);
       });
       return slot;
+    }
+
+    /* ===== Console compatta (due livelli) ===== */
+    function createTwoLevelConsole(wrap){
+      const dock = document.createElement('div');
+      dock.className = 'kbd-dock';
+
+      // Sezione 1: Elementi + Coefficienti + Tool
+      const sec1 = document.createElement('section');
+      sec1.className = 'kbd-section';
+      const t1 = document.createElement('div');
+      t1.className = 'kbd-title';
+      t1.textContent = 'Elementi & coefficienti';
+      sec1.appendChild(t1);
+      const rows1 = document.createElement('div');
+      rows1.className = 'kbd-rows';
+
+      const row1a = document.createElement('div'); row1a.className='kbd-row';
+      ['Fe','Sn','H','N','O','Cl','S','Br','I','(',')','OH','H₂O','Svuota slot'].forEach(label=>{
+        const b=document.createElement('button'); b.type='button'; b.className='kbd-btn'+(label.length>2?' tool':''); b.textContent=label;
+        if(label==='Svuota slot') b.addEventListener('click',()=>clearActiveSlot(wrap));
+        else b.addEventListener('click',()=>insertAtSavedCaret(label,wrap));
+        row1a.appendChild(b);
+      });
+      rows1.appendChild(row1a);
+
+      const row1b = document.createElement('div'); row1b.className='kbd-row';
+      ['1','2','3','4','5','6','7','8','◀︎','▶︎','⌫','Svuota tutto'].forEach((label)=>{
+        const b=document.createElement('button'); b.type='button'; b.className='kbd-btn'+(label.length>2?' tool':'');
+        b.textContent=label;
+        if(label==='◀︎') b.addEventListener('click',()=>moveActive(wrap,-1));
+        else if(label==='▶︎') b.addEventListener('click',()=>moveActive(wrap,+1));
+        else if(label==='⌫') b.addEventListener('click',()=>softBackspace(wrap));
+        else if(label==='Svuota tutto') b.addEventListener('click',()=>clearAllSlots(wrap));
+        else b.addEventListener('click',()=>insertAtSavedCaret(label,wrap));
+        row1b.appendChild(b);
+      });
+      rows1.appendChild(row1b);
+      sec1.appendChild(rows1);
+      dock.appendChild(sec1);
+
+      // Sezione 2: N.O. + Indici
+      const sec2 = document.createElement('section');
+      sec2.className = 'kbd-section';
+      const t2 = document.createElement('div');
+      t2.className = 'kbd-title';
+      t2.textContent = 'Numeri di ossidazione (sopra) & indici (sotto)';
+      sec2.appendChild(t2);
+      const rows2 = document.createElement('div');
+      rows2.className = 'kbd-rows';
+
+      const row2a = document.createElement('div'); row2a.className='kbd-row';
+      ['⁺¹','⁺²','⁺³','⁺⁴','⁺⁵','⁺⁶','⁺⁷','⁻¹','⁻²','⁻³','⁻⁴'].forEach(sym=>{
+        const b=document.createElement('button'); b.type='button'; b.className='kbd-btn no'; b.textContent=sym; b.addEventListener('click',()=>insertAtSavedCaret(sym,wrap)); row2a.appendChild(b);
+      });
+      rows2.appendChild(row2a);
+
+      const row2b = document.createElement('div'); row2b.className='kbd-row';
+      ['₁','₂','₃','₄','₅','₆','₇','₈'].forEach(sym=>{
+        const b=document.createElement('button'); b.type='button'; b.className='kbd-btn sub'; b.textContent=sym; b.addEventListener('click',()=>insertAtSavedCaret(sym,wrap)); row2b.appendChild(b);
+      });
+      rows2.appendChild(row2b);
+
+      sec2.appendChild(rows2);
+      dock.appendChild(sec2);
+
+      return dock;
     }
 
     function createBuilderFromPattern(pattern, qIndex) {
@@ -349,41 +497,40 @@
         if (tok === 'coef' && pattern[i+1] === 'slot') {
           const pair = document.createElement('span');
           pair.className = 'pair';
-          pair.appendChild(createSlot({ coef:true }));
-          pair.appendChild(createSlot({ coef:false }));
+          const coefSlot = createSlot({ coef:true });
+          const normSlot = createSlot({ coef:false });
+          /* caret iniziale alla fine per entrambi */
+          setSavedCaret(coefSlot, 0);
+          setSavedCaret(normSlot, 0);
+          pair.appendChild(coefSlot);
+          pair.appendChild(normSlot);
           formula.appendChild(pair);
           i++;
           continue;
         }
-        if (tok === 'slot') formula.appendChild(createSlot({ coef:false }));
-        else if (tok === 'coef') formula.appendChild(createSlot({ coef:true }));
-        else {
-          const s = document.createElement('span');
-          s.className = 'static' + (tok === '→' ? ' arrow' : '');
-          s.textContent = tok;
+        if (tok === 'slot') {
+          const s = createSlot({ coef:false });
+          setSavedCaret(s, 0);
           formula.appendChild(s);
+        }
+        else if (tok === 'coef') {
+          const s = createSlot({ coef:true });
+          setSavedCaret(s, 0);
+          formula.appendChild(s);
+        }
+        else {
+          const st = document.createElement('span');
+          st.className = 'static' + (tok === '→' ? ' arrow' : '');
+          st.textContent = tok;
+          formula.appendChild(st);
         }
       }
 
-      const dock = document.createElement('div');
-      dock.className = 'kbd-dock';
-      dock.appendChild(createKeyboardSection(
-        "Elementi e numeri",
-        ['H','Fe','Sn','N','S','O','Cl','Br','I','OH','H₂O','1','2','3','4','5','6','7','8','(',')'],
-        { includeTools: true, contextWrap: wrap, oneLine: true }
-      ));
-      dock.appendChild(createKeyboardSection(
-        "Numeri di ossidazione",
-        ['⁺¹','⁺²','⁺³','⁺⁴','⁺⁵','⁺⁶','⁺⁷','⁻¹','⁻²','⁻³','⁻⁴'],
-        { extraClass: 'sup', includeTools: false, contextWrap: wrap, equal: true }
-      ));
-      dock.appendChild(createKeyboardSection(
-        "Indici",
-        ['₁','₂','₃','₄','₅','₆','₇','₈'],
-        { extraClass: 'sub', includeTools: false, contextWrap: wrap, equal: true }
-      ));
+      // Console compatta a due livelli
+      const dock = createTwoLevelConsole(wrap);
       wrap.appendChild(dock);
 
+      // Toggle mini-tabelle (solo mobile)
       const mt = document.createElement('div');
       mt.className = 'mini-toggle';
       mt.innerHTML = '<button type="button" class="mini-btn" aria-expanded="false">Mostra mini-tabelle 📘</button>';
@@ -403,8 +550,8 @@
           <thead><tr><th>Anidridi</th><th>Nome</th></tr></thead>
           <tbody>
             <tr><td>2 N.O.</td><td>n.o. + basso → suffisso osa; n.o. + alto → suffisso ica</td></tr>
-            <tr><td>3 N.O.</td><td>+1 → ipo....osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica</td></tr>
-            <tr><td>4 N.O.</td><td>+1 → ipo....osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per....ica</td></tr>
+            <tr><td>3 N.O.</td><td>+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica</td></tr>
+            <tr><td>4 N.O.</td><td>+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica</td></tr>
           </tbody>
         </table>`;
       mt.querySelector('button').addEventListener('click',(ev)=>{
@@ -419,6 +566,7 @@
       return wrap;
     }
 
+    /* ===== Valutazione / PDF / PIN: invariati ===== */
     function levenshtein(a,b){const m=[];for(let i=0;i<=b.length;i++)m[i]=[i];for(let j=0;j<=a.length;j++)m[0][j]=j;for(let i=1;i<=b.length;i++){for(let j=1;j<=a.length;j++){m[i][j]=b.charAt(i-1)===a.charAt(j-1)?m[i-1][j-1]:Math.min(m[i-1][j-1]+1,m[i][j-1]+1,m[i-1][j]+1)}}return m[b.length][a.length]}
     const RX_STRIP_EMPTY = /[\s+\u2192]/g;
     const normForEmpty = str => (str || '').replace(RX_STRIP_EMPTY, '').trim();
@@ -453,7 +601,7 @@
       function drawArrowInline(x,y,size=10){ const shaft=size*0.75, head=size*0.30; doc.setLineWidth(0.5); doc.line(x, y-1, x+shaft, y-1); const hx=x+shaft, hy=y-1; doc.line(hx,hy,hx+head,hy); doc.line(hx+head,hy,hx+head-2.4,hy-1.9); doc.line(hx+head,hy,hx+head-2.4,hy+1.9); return head + shaft }
       function drawGreaterEqualInline(x,y,size=10){ const w=size*0.52; doc.setLineWidth(0.5); doc.line(x, y-1.2, x+w, y-1.2); doc.line(x+w, y-1.2, x+w-3, y-1.2-2); doc.line(x+w, y-1.2, x+w-3, y-1.2+2); doc.line(x, y+1.2, x+w, y+1.2); return w + 1.2 }
       const SUP_MAP = { '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁺':'+','⁻':'-' };
-      const SUB_MAP = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','⁹':'9' };
+      const SUB_MAP = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','⁷':'7','⁸':'8','⁹':'9' };
       function chemToTokens(text){
         const tokens=[]; let i=0; text=String(text||'');
         while(i<text.length){
@@ -589,6 +737,11 @@
             dateStr=document.getElementById('date').value.trim();
       if(!n||!s||!c){alert("Compila tutti i campi (nome, cognome, classe) per iniziare.");return;}
 
+      // Nascondi tutto ciò che è area docenti
+      document.getElementById('teacherPanel').style.display='none';
+      document.getElementById('teacherCta').style.display='none';
+      teacherUnlocked=false; pinFailCount=0; pinLockedUntil=0;
+
       document.getElementById('preData').style.display='none';
       document.getElementById('examHeader').style.display='flex';
       document.getElementById('hdrStudent').textContent=`${n} ${s} (${c})`;
@@ -602,20 +755,27 @@
       document.getElementById('quizRow').style.display = 'flex';
       document.getElementById('quizSide').style.display = (window.matchMedia('(min-width:1025px)').matches ? 'block' : 'none');
 
+      // Sidebar contenuti
       document.getElementById('ox-row1').textContent = "nome del Me";
       document.getElementById('ox-row2').textContent = "n.o. + basso → suffisso oso; n.o. + alto → suffisso ico";
       document.getElementById('ox-row3').textContent = "n.o. + basso → suffisso oso; n.o. successivo a quello + basso → suffisso ico; n.o. superiori → notazione di Stock";
       document.getElementById('an-row2').textContent = "n.o. + basso → suffisso osa; n.o. + alto → suffisso ica";
-      document.getElementById('an-row3').textContent = "+1 → ipo....osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica";
-      document.getElementById('an-row4').textContent = "+1 → ipo....osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per....ica";
+      document.getElementById('an-row3').textContent = "+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica";
+      document.getElementById('an-row4').textContent = "+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica";
 
+      // Domande
       document.getElementById('questions').style.display='block';
       const container=document.getElementById('questionsContainer'); container.innerHTML='';
       questions.forEach((q,i)=>{
         const block=document.createElement('div'); block.className='question-block';
         const label=document.createElement('div'); label.className='q-title'; label.innerHTML=(i+1)+". "+q.question; block.appendChild(label);
         if(synthesisPatterns[i]){const builder=createBuilderFromPattern(synthesisPatterns[i],i); builder.id='builder_'+i; block.appendChild(builder);}
-        else {const input=document.createElement('input'); input.type='text'; input.id='q'+i; input.placeholder='Risposta'; input.className='answer-field'; input.maxLength=30; input.addEventListener('input',()=>{input.value=input.value.toUpperCase()}); block.appendChild(input);}
+        else {
+          const input=document.createElement('input'); input.type='text'; input.id='q'+i; input.placeholder='Risposta';
+          input.className='answer-field'; input.maxLength=30; /* richiesto: 30 */
+          input.addEventListener('input',()=>{input.value=input.value.toUpperCase()});
+          block.appendChild(input);
+        }
         container.appendChild(block);
       });
 
@@ -662,7 +822,7 @@
         if(point>=maxVal){ colorClass='good'; }
         else if(point>=maxVal/2){ colorClass='mid'; }
 
-        results.push({ question:q.question, yourAnswer:userAnswer, correctAnswer:q.answer, point:point, max:maxVal, color:colorClass });
+        results.push({ question:q.question, yourAnswer:userAnswer, correctAnswer:q.answer, point:point, max:maxVal });
       });
 
       const finalScore = Math.round((totalScore / totalPossible) * 10 * 100) / 100;
@@ -678,10 +838,12 @@
       if(finalScore<6) document.body.style.backgroundColor='#ffefef';
       document.getElementById('result').innerHTML=res;
 
+      // Fine tentativo: nascondi UI quiz
       document.getElementById('examHeader').style.display = 'none';
       document.getElementById('quizSide').style.display = 'none';
       document.getElementById('questions').style.display='none';
 
+      // Riepilogo studente
       const studentDiv = document.getElementById('studentList');
       let sHtml = '<h3>Le tue risposte</h3><ul>';
       results.forEach(e=>{
@@ -690,6 +852,7 @@
       sHtml+="</ul>";
       studentDiv.innerHTML = sHtml;
 
+      // Mostra CTA PIN
       document.getElementById('teacherCta').style.display='block';
       renderTeacherDetails(results);
 
@@ -716,9 +879,20 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
+    /* Aggiorna caret salvato quando cambia la selezione dentro uno slot attivo */
+    document.addEventListener('selectionchange', ()=>{
+      const active = document.querySelector('.slot.active');
+      if(active){
+        const off = caretOffsetWithin(active);
+        if(off!==null) setSavedCaret(active, off);
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
       const dateEl = document.getElementById('date');
       if (dateEl) dateEl.value = formatDateIT(new Date());
+      document.getElementById('teacherPanel').style.display='none';
+      document.getElementById('teacherCta').style.display='none';
 
       document.getElementById('startBtn').addEventListener('click', startQuiz);
       document.getElementById('submitBtn').addEventListener('click', submitQuiz);
