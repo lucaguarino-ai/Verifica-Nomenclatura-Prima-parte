@@ -369,7 +369,7 @@
       dock.className = 'kbd-dock';
       dock.appendChild(createKeyboardSection(
         "Elementi e numeri",
-        ['H','O','N','S','Fe','Sn','Br','I','Cl','OH','H₂O','1','2','3','4','5','6','7','8','(',')'],
+        ['H','Fe','Sn','N','S','O','Cl','Br','I','OH','H₂O','1','2','3','4','5','6','7','8','(',')'],
         { includeTools: true, contextWrap: wrap, oneLine: true }
       ));
       dock.appendChild(createKeyboardSection(
@@ -674,7 +674,7 @@
 
       let res=`${studentName} (${studentClass}) — Data: ${dateStr} — Inizio: ${startStr} — Fine: ${endStr} — Trascorso: ${elapsedStr}<br>`;
       res += `Punteggio: ${finalScore}/10`;
-      res += finalScore>=6 ? " — Bravo! 😉💪" : " — Peccato, studia meglio per la prossima verifica. 😉";
+      res += finalScore>=6 ? " — Bravo, continua a studiare 💪" : " — Peccato, studia meglio per la prossima verifica 😉";
       if(finalScore<6) document.body.style.backgroundColor='#ffefef';
       document.getElementById('result').innerHTML=res;
 
