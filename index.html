@@ -53,7 +53,6 @@
     .mini-table th{background:#e6f7e6;color:#005f00}
     .mini-table td:first-child{font-size:12px;width:34%}
 
-    /* Domande e input testuali */
     .question-block{margin-bottom:16px}
     .q-title{margin-bottom:6px;font-size:19px;line-height:1.25}
     input.answer-field{
@@ -68,7 +67,6 @@
       input.answer-field{width:100%}
     }
 
-    /* Builder */
     .builder-wrap{margin-top:10px;border:1px dashed #66cc66;border-radius:12px;padding:12px;background:#f6fff6}
     .formula{
       display:flex;flex-wrap:wrap;
@@ -100,7 +98,6 @@
     .static{padding:0 5px;color:#004d00;font-weight:700}
     .static.arrow{font-size:22px}
 
-    /* Console */
     .kbd-dock{margin-top:8px}
     .kbd-section{margin-top:8px;border-top:1px solid #99cc99;padding-top:8px}
     .kbd-title{margin:0 0 6px;font-size:14px;color:#006600;font-weight:700}
@@ -121,7 +118,6 @@
       .mini-toggle, .mini-panel { display: none !important; }
     }
 
-    /* Modale PIN centrata e compatta */
     .modal{
       position: fixed;
       inset: 0;
@@ -153,7 +149,6 @@
       .modal input#pinInput{ font-size:15px; padding:7px 8px; }
     }
 
-    /* Modale RIPRISTINO (riusa .modal) */
     #restoreModal .dialog{ max-width: 360px; }
     #restoreModal .actions{ display:flex; gap:8px; margin-top:12px; }
     #restoreModal .actions button{ flex:1 1 auto; border-radius:10px }
@@ -201,8 +196,8 @@
       <aside id="quizSide" class="quiz-side" style="display:none;" aria-label="Promemoria nomenclatura">
         <div class="mini-stack">
           <div class="mini-card">
-            <table class="mini-table" aria-label="Ossidi vs Nome">
-              <thead><tr><th>Ossidi</th><th>Nome</th></tr></thead>
+            <table class="mini-table" aria-label="Ossidi/Idrossidi vs Nome">
+              <thead><tr><th>Ossidi/Idrossidi</th><th>Nome</th></tr></thead>
               <tbody>
                 <tr><td>N.O.</td><td id="ox-row1"></td></tr>
                 <tr><td>2 N.O.</td><td id="ox-row2"></td></tr>
@@ -211,8 +206,8 @@
             </table>
           </div>
           <div class="mini-card">
-            <table class="mini-table" aria-label="Anidridi vs Nome">
-              <thead><tr><th>Anidridi</th><th>Nome</th></tr></thead>
+            <table class="mini-table" aria-label="Anidridi/Ossiacidi vs Nome">
+              <thead><tr><th>Anidridi/Ossiacidi</th><th>Nome</th></tr></thead>
               <tbody>
                 <tr><td>2 N.O.</td><td id="an-row2"></td></tr>
                 <tr><td>3 N.O.</td><td id="an-row3"></td></tr>
@@ -220,7 +215,7 @@
               </tbody>
             </table>
           </div>
-          <!-- >>> NUOVA MINI TABELLA DESKTOP: Idruri / Idracidi -->
+          <!-- Idruri / Idracidi -->
           <div class="mini-card">
             <table class="mini-table" aria-label="Idruri e Idracidi">
               <thead><tr><th>Categoria</th><th>Nome</th></tr></thead>
@@ -230,7 +225,6 @@
               </tbody>
             </table>
           </div>
-          <!-- <<< FINE NUOVA MINI TABELLA -->
         </div>
       </aside>
     </div>
@@ -248,7 +242,7 @@
     </div>
 
     <div id="teacherCta" style="display:none;margin-top:12px">
-      <button id="openPinBtn" class="btn-secondary btn-block">Area docenti (PIN)</button>
+      <button id="openPinBtn" class="btn-secondary btn-block">Area docente (PIN)</button>
     </div>
   </div>
 
@@ -511,23 +505,22 @@
       panel.className = 'mini-panel';
       panel.setAttribute('hidden','');
       panel.innerHTML = `
-        <table class="mini-table" aria-label="Ossidi vs Nome" style="margin-bottom:8px">
-          <thead><tr><th>Ossidi</th><th>Nome</th></tr></thead>
+        <table class="mini-table" aria-label="Ossidi/Idrossidi vs Nome" style="margin-bottom:8px">
+          <thead><tr><th>Ossidi/Idrossidi</th><th>Nome</th></tr></thead>
           <tbody>
             <tr><td>N.O.</td><td>nome del Me</td></tr>
             <tr><td>2 N.O.</td><td>n.o. + basso → suffisso oso; n.o. + alto → suffisso ico</td></tr>
             <tr><td>≥ 3 N.O.</td><td>n.o. + basso → suffisso oso; n.o. successivo a quello + basso → suffisso ico; n.o. superiori → notazione di Stock</td></tr>
           </tbody>
         </table>
-        <table class="mini-table" aria-label="Anidridi vs Nome">
-          <thead><tr><th>Anidridi</th><th>Nome</th></tr></thead>
+        <table class="mini-table" aria-label="Anidridi/Ossiacidi vs Nome">
+          <thead><tr><th>Anidridi/Ossiacidi</th><th>Nome</th></tr></thead>
           <tbody>
             <tr><td>2 N.O.</td><td>n.o. + basso → suffisso osa; n.o. + alto → suffisso ica</td></tr>
             <tr><td>3 N.O.</td><td>+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica</td></tr>
             <tr><td>4 N.O.</td><td>+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica</td></tr>
           </tbody>
         </table>
-        <!-- >>> NUOVA MINI TABELLA MOBILE: Idruri / Idracidi -->
         <table class="mini-table" aria-label="Idruri e Idracidi" style="margin-top:8px">
           <thead><tr><th>Categoria</th><th>Nome</th></tr></thead>
           <tbody>
@@ -535,7 +528,6 @@
             <tr><td>Idracidi</td><td>___idrico</td></tr>
           </tbody>
         </table>
-        <!-- <<< FINE NUOVA MINI TABELLA -->
       `;
       mt.querySelector('button').addEventListener('click',(ev)=>{
         const btn = ev.currentTarget;
@@ -549,7 +541,7 @@
       return wrap;
     }
 
-    /* ======= VALUTAZIONE / NORMALIZZAZIONI ======= */
+    /* ======= VALUTAZIONE ======= */
     function levenshtein(a,b){const m=[];for(let i=0;i<=b.length;i++)m[i]=[i];for(let j=0;j<=a.length;j++)m[0][j]=j;for(let i=1;i<=b.length;i++){for(let j=1;j<=a.length;j++){m[i][j]=b.charAt(i-1)===a.charAt(j-1)?m[i-1][j-1]:Math.min(m[i-1][j-1]+1,m[i][j-1]+1,m[i-1][j]+1)}}return m[b.length][a.length]}
     const RX_STRIP_EMPTY = /[\s+\u2192]/g;
     const normForEmpty = str => (str || '').replace(RX_STRIP_EMPTY, '').trim();
@@ -575,7 +567,7 @@
 
     /* ======= PDF DOCENTE ======= */
     function exportPdf(){
-      if(!teacherUnlocked){ alert('Area docenti bloccata. Inserire il PIN.'); return; }
+      if(!teacherUnlocked){ alert('Area docente bloccata. Inserire il PIN.'); return; }
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       const pageW = doc.internal.pageSize.getWidth();
@@ -585,7 +577,7 @@
       function drawArrowInline(x,y,size=10){ const shaft=size*0.75, head=size*0.30; doc.setLineWidth(0.5); doc.line(x, y-1, x+shaft, y-1); const hx=x+shaft, hy=y-1; doc.line(hx,hy,hx+head,hy); doc.line(hx+head,hy,hx+head-2.4,hy-1.9); doc.line(hx+head,hy,hx+head-2.4,hy+1.9); return head + shaft }
       function drawGreaterEqualInline(x,y,size=10){ const w=size*0.52; doc.setLineWidth(0.5); doc.line(x, y-1.2, x+w, y-1.2); doc.line(x+w, y-1.2, x+w-3, y-1.2-2); doc.line(x+w, y-1.2, x+w-3, y-1.2+2); doc.line(x, y+1.2, x+w, y+1.2); return w + 1.2 }
       const SUP_MAP = { '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁺':'+','⁻':'-' };
-      const SUB_MAP = { '₀':'0','₁':'1','₂':'2','₃':'3','⁴':'4','₅':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9' };
+      const SUB_MAP = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8' };
       function chemToTokens(text){
         const tokens=[]; let i=0; text=String(text||'');
         while(i<text.length){
@@ -639,7 +631,7 @@
         return cy;
       }
 
-      /* risultati + domande */
+      /* intestazione risultati */
       doc.setFontSize(14); doc.text('Verifica di Nomenclatura dei composti inorganici - Prima parte', 10, 10);
       doc.setFontSize(12);
       const dateStr=document.getElementById('date').value;
@@ -669,7 +661,7 @@
         doc.text(e.point ? `Punteggio: ${e.point}` : `Punteggio: —`, 10, y); y += blockGap; if (y > pageH - 20) { doc.addPage(); addSignature(); y = 12; }
       });
 
-      /* ===== Mini-tabelle: pagina finale (Ossidi, Anidridi, Idruri/Idracidi) ===== */
+      /* Mini-tabelle finali (Ossidi, Anidridi, Idruri/Idracidi) */
       doc.addPage(); addSignature();
       y = 14;
 
@@ -739,25 +731,26 @@
         ['2 N.O.', 'n.o. + basso → suffisso oso; n.o. + alto → suffisso ico'],
         ['≥ 3 N.O.', 'n.o. + basso → suffisso oso; n.o. successivo a quello + basso → suffisso ico; n.o. superiori → notazione di Stock']
       ];
-      drawTable('Ossidi','Nome', tblOssidi);
+      drawTable('Ossidi/Idrossidi','Nome', tblOssidi);
 
       const tblAnidridi = [
         ['2 N.O.', 'n.o. + basso → suffisso osa; n.o. + alto → suffisso ica'],
         ['3 N.O.', '+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica'],
         ['4 N.O.', '+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica']
       ];
-      drawTable('Anidridi','Nome', tblAnidridi);
+      drawTable('Anidridi/Ossiacidi','Nome', tblAnidridi);
 
-      /* >>> NUOVA TABELLA PDF: Idruri / Idracidi */
       const tblIdruriIdracidi = [
         ['Idruri',   'Nomenclatura IUPAC'],
         ['Idracidi', '___idrico']
       ];
       drawTable('Categoria','Nome', tblIdruriIdracidi);
-      /* <<< FINE NUOVA TABELLA */
 
       addSignature();
       doc.save(`Verifica_${(nameFull.split(' (')[0] || 'Studente').replaceAll(' ','_')}.pdf`);
+
+      /* >>> elimina salvataggio post-invio dopo export <<< */
+      clearSubmittedState();
     }
 
     /* ======= PIN ======= */
@@ -839,6 +832,18 @@
       try{ const s=localStorage.getItem(LS_KEY); if(!s) return null; return JSON.parse(s); }catch{ return null }
     }
 
+    /* === Stato post-invio (persistente fino a export PDF) === */
+    const LS_KEY_SUB = 'verificaSubmitted_v1';
+    function saveSubmittedState(payload){
+      try{ localStorage.setItem(LS_KEY_SUB, JSON.stringify(payload)); }catch{}
+    }
+    function getSubmittedState(){
+      try{ const s = localStorage.getItem(LS_KEY_SUB); return s ? JSON.parse(s) : null; }catch{ return null }
+    }
+    function clearSubmittedState(){
+      try{ localStorage.removeItem(LS_KEY_SUB); }catch{}
+    }
+
     function restoreFromState(state){
       document.getElementById('preData').style.display='none';
       document.getElementById('examHeader').style.display='flex';
@@ -890,7 +895,68 @@
       });
     }
 
-    /* ======= FLUSSO VERIFICA ======= */
+    /* === Ripristino stato post-invio === */
+    function restoreSubmitted(state){
+      document.getElementById('preData').style.display='none';
+      document.getElementById('examHeader').style.display='none';
+      document.getElementById('quizRow').style.display='none';
+      document.getElementById('questions').style.display='none';
+      document.getElementById('quizSide').style.display='none';
+
+      const h = state.studentHeader;
+      const res = `${h.nameFull} — Data: ${h.date} — Inizio: ${h.start} — Fine: ${h.end} — Trascorso: ${h.elapsed}<br>`
+                + `Punteggio: ${state.finalScore}/10`
+                + (state.finalScore>=6 ? " — Ben fatto, continua a studiare 😉" : " — Peccato, studia meglio per la prossima verifica 💪");
+      if(state.finalScore<6) document.body.style.backgroundColor='#ffefef';
+      document.getElementById('result').innerHTML = res;
+
+      const studentDiv = document.getElementById('studentList');
+      let sHtml = '<h3>Le tue risposte</h3><ul>';
+      (state.studentList||[]).forEach(e=>{
+        sHtml += `<li><strong>Domanda:</strong> ${e.question}<br><strong>Tua risposta:</strong> ${e.yourAnswer || '<em>(vuota)</em>'}</li>`;
+      });
+      sHtml += '</ul>';
+      studentDiv.innerHTML = sHtml;
+
+      document.getElementById('teacherCta').style.display='block';
+      renderTeacherDetails(state.teacherList||[]);
+      const exportBtn = document.getElementById('exportPdfBtn');
+      if (exportBtn) {
+        exportBtn.replaceWith(exportBtn.cloneNode(true));
+      }
+      document.getElementById('exportPdfBtn').addEventListener('click', exportPdf, { once:true });
+
+      const modal = document.getElementById('restoreModal');
+      if(modal){
+                modal.classList.add('open');
+                const title = modal.querySelector('#restoreTitle');
+                if(title) title.textContent = 'Risultati ripristinati';
+                const p = modal.querySelector('p');
+                if(p) p.textContent = 'Hai una consegna già inviata. Puoi restare sui risultati oppure tornare all’inizio.';
+                const actions = modal.querySelector('.actions');
+                if(actions){
+                  actions.innerHTML = '';
+
+                  const stayBtn = document.createElement('button');
+                  stayBtn.textContent = 'Resta sui risultati';
+                  stayBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+
+                  const backBtn = document.createElement('button');
+                  backBtn.textContent = 'Torna all’inizio';
+                  backBtn.className = 'btn-secondary';
+                  backBtn.addEventListener('click', ()=>{
+                    modal.classList.remove('open');
+                    resetToStartFromSubmitted();
+                  });
+
+                 actions.appendChild(stayBtn);
+                 actions.appendChild(backBtn);
+
+        }
+      }
+    }
+
+    /* ======= FLUSSO ======= */
     function startQuiz(){
       const n=document.getElementById('name').value.trim(),
             s=document.getElementById('surname').value.trim(),
@@ -993,7 +1059,7 @@
 
       let res=`${studentName} (${studentClass}) — Data: ${dateStr} — Inizio: ${startStr} — Fine: ${endStr} — Trascorso: ${elapsedStr}<br>`;
       res += `Punteggio: ${finalScore}/10`;
-      res += finalScore>=6 ? " — Bravo, continua a studiare 💪" : " — Peccato, studia meglio per la prossima verifica 😉";
+      res += finalScore>=6 ? " — Ben fatto, continua a studiare 😉" : " — Peccato, studia meglio per la prossima verifica 💪";
       if(finalScore<6) document.body.style.backgroundColor='#ffefef';
       document.getElementById('result').innerHTML=res;
 
@@ -1013,7 +1079,23 @@
       renderTeacherDetails(results);
       document.getElementById('exportPdfBtn').addEventListener('click', exportPdf, { once:true });
 
+      /* >>> salva stato post-invio e pulisci stato in-corso <<< */
       clearState();
+      saveSubmittedState({
+        phase: 'submitted',
+        studentHeader: {
+          nameFull: document.getElementById('hdrStudent').textContent,
+          date: dateStr,
+          start: startStr,
+          end: endStr,
+          elapsed: elapsedStr
+        },
+        finalScore,
+        studentList: results.map(e=>({question:e.question, yourAnswer:e.yourAnswer})),
+        teacherList: results,
+        timestamp: Date.now()
+      });
+
       document.getElementById('result').scrollIntoView({behavior:'smooth'});
     }
 
@@ -1034,8 +1116,32 @@
       document.getElementById('quizRow').style.display='none';
       document.getElementById('quizSide').style.display='none';
       clearState();
+      clearSubmittedState(); /* <<< cancella anche lo stato post-invio */
       window.scrollTo({top:0,behavior:'smooth'});
     }
+
+    function resetToStartFromSubmitted(){
+              if(elapsedTimer){ clearInterval(elapsedTimer); elapsedTimer=null; }
+              clearState();
+              clearSubmittedState();
+              teacherUnlocked=false; pinFailCount=0; pinLockedUntil=0;
+
+              document.getElementById('questionsContainer')?.replaceChildren();
+              document.getElementById('questions').style.display='none';
+              document.getElementById('result').innerHTML='';
+              document.getElementById('studentList').innerHTML='';
+              document.getElementById('teacherList').innerHTML='';
+              document.getElementById('teacherPanel').style.display='none';
+              document.getElementById('teacherCta').style.display='none';
+              document.body.style.backgroundColor='var(--bg)';
+
+              document.getElementById('preData').style.display='flex';
+              document.getElementById('examHeader').style.display='none';
+              document.getElementById('quizRow').style.display='none';
+              document.getElementById('quizSide').style.display='none';
+
+              window.scrollTo({top:0, behavior:'smooth'});
+         }
 
     /* ======= EVENTI GLOBALI ======= */
     document.addEventListener('selectionchange', ()=>{
@@ -1061,6 +1167,14 @@
       document.getElementById('pinLoginBtn').addEventListener('click', verifyPin);
       document.getElementById('pinInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); verifyPin(); } });
 
+      /* priorità: stato post-invio (mostra risultati) */
+      const submitted = getSubmittedState();
+      if(submitted && submitted.phase === 'submitted'){
+        restoreSubmitted(submitted);
+        return;
+      }
+
+      /* altrimenti proponi ripristino stato "in corso" */
       const saved = hasSavedState();
       if(saved && saved.phase==='started'){
         document.getElementById('restoreModal').classList.add('open');
