@@ -53,13 +53,13 @@
     .mini-table th{background:#e6f7e6;color:#005f00}
     .mini-table td:first-child{font-size:12px;width:34%}
 
-    /* Domande e input testuali (più corti e stretti, maxLength 30) */
+    /* Domande e input testuali */
     .question-block{margin-bottom:16px}
     .q-title{margin-bottom:6px;font-size:19px;line-height:1.25}
     input.answer-field{
-      width: min(100%, 520px);   /* più stretta */
-      font-size: 17px;           /* un filo più piccola */
-      padding: 10px 12px;        /* più bassa (altezza) */
+      width: min(100%, 520px);
+      font-size: 17px;
+      padding: 10px 12px;
       border: 2px solid var(--line);
       border-radius: 10px;
       box-sizing: border-box;
@@ -68,11 +68,11 @@
       input.answer-field{width:100%}
     }
 
-    /* Builder (slot leggermente più grandi e più vicini ai + / →) */
+    /* Builder */
     .builder-wrap{margin-top:10px;border:1px dashed #66cc66;border-radius:12px;padding:12px;background:#f6fff6}
     .formula{
       display:flex;flex-wrap:wrap;
-      gap:4px; /* avvicinati */
+      gap:4px;
       align-items:center;min-height:42px;justify-content:center
     }
     .pair{display:inline-flex;align-items:center;gap:2px}
@@ -100,7 +100,7 @@
     .static{padding:0 5px;color:#004d00;font-weight:700}
     .static.arrow{font-size:22px}
 
-    /* Console compatta a due livelli */
+    /* Console */
     .kbd-dock{margin-top:8px}
     .kbd-section{margin-top:8px;border-top:1px solid #99cc99;padding-top:8px}
     .kbd-title{margin:0 0 6px;font-size:14px;color:#006600;font-weight:700}
@@ -109,82 +109,55 @@
     .kbd-btn{margin:0;padding:8px 8px;border-radius:10px;background:var(--chip);color:var(--ink);border:1px solid var(--line);font-weight:700;font-size:14px;flex:0 0 auto}
     .kbd-btn:active{transform:translateY(1px)}
     .kbd-btn.tool{font-size:13px;padding:8px 10px}
-
-    /* Tasti N.O. e indici (già maggiorati nel passaggio precedente) */
     .kbd-btn.no{font-size:20px;padding:12px 13px}
     .kbd-btn.sub{font-size:20px;padding:12px 13px}
 
-    /* Console sticky su mobile */
     @media (max-width: 720px){
       .builder-wrap{padding-bottom:110px}
       .kbd-dock{position:sticky;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);padding:8px;box-shadow:0 -6px 12px rgba(0,0,0,.08);z-index:50;border-bottom-left-radius:12px;border-bottom-right-radius:12px}
     }
 
-    /* Mini-tabelle per domanda: visibili solo su desktop */
     @media (min-width:1025px){
       .mini-toggle, .mini-panel { display: none !important; }
     }
 
     /* Modale PIN centrata e compatta */
-.modal{
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,.35);
-  z-index: 9999;
-  padding: 16px;
-}
-.modal.open{ display: flex; }
+    .modal{
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.35);
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal.open{ display: flex; }
+    .modal .dialog{
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.18);
+      width: 100%;
+      max-width: 300px;
+      padding: 10px 12px;
+    }
+    .modal .row{ display:flex; gap:6px; margin-top:8px; }
+    .modal input#pinInput{
+      flex: 1 1 auto; padding: 8px 10px; border: 2px solid var(--line); border-radius: 8px; font-size: 16px; width: 100%;
+    }
+    .modal button#pinLoginBtn{ white-space:nowrap; padding:8px 10px; border-radius:8px; font-size:15px; }
+    .modal .help{ margin-top:6px; font-size:13px; color:#335533; }
+    @media (max-width:480px){
+      .modal .dialog{ max-width:260px; padding:8px 10px; }
+      .modal input#pinInput{ font-size:15px; padding:7px 8px; }
+    }
 
-.modal .dialog{
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.18);
-  width: 100%;
-  max-width: 300px;   /* più piccola */
-  padding: 10px 12px; /* ridotto */
-}
-
-.modal .row{
-  display: flex;
-  gap: 6px;
-  margin-top: 8px;
-}
-.modal input#pinInput{
-  flex: 1 1 auto;
-  padding: 8px 10px;        /* più piccolo */
-  border: 2px solid var(--line);
-  border-radius: 8px;
-  font-size: 16px;          /* ridotto da 18px */
-  width: 100%;
-}
-.modal button#pinLoginBtn{
-  white-space: nowrap;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 15px;
-}
-.modal .help{
-  margin-top: 6px;
-  font-size: 13px;
-  color: #335533;
-}
-
-/* Ancora più compatta su smartphone stretti */
-@media (max-width: 480px) {
-  .modal .dialog {
-    max-width: 260px;
-    padding: 8px 10px;
-  }
-  .modal input#pinInput {
-    font-size: 15px;
-    padding: 7px 8px;
-  }
-}
-
+    /* Modale RIPRISTINO (riusa .modal) */
+    #restoreModal .dialog{ max-width: 360px; }
+    #restoreModal .actions{ display:flex; gap:8px; margin-top:12px; }
+    #restoreModal .actions button{ flex:1 1 auto; border-radius:10px }
+    #restoreModal p{ margin:10px 0 0; line-height:1.4 }
   </style>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -247,6 +220,17 @@
               </tbody>
             </table>
           </div>
+          <!-- >>> NUOVA MINI TABELLA DESKTOP: Idruri / Idracidi -->
+          <div class="mini-card">
+            <table class="mini-table" aria-label="Idruri e Idracidi">
+              <thead><tr><th>Categoria</th><th>Nome</th></tr></thead>
+              <tbody>
+                <tr><td>Idruri</td><td>Nomenclatura IUPAC</td></tr>
+                <tr><td>Idracidi</td><td>___idrico</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- <<< FINE NUOVA MINI TABELLA -->
         </div>
       </aside>
     </div>
@@ -281,6 +265,18 @@
     </div>
   </div>
 
+  <!-- Modale RIPRISTINO -->
+  <div id="restoreModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="restoreTitle">
+    <div class="dialog">
+      <h3 id="restoreTitle">Ripristino verifica</h3>
+      <p>🔄 È stato trovato un tentativo in corso. Vuoi riprendere la verifica da dove avevi interrotto?</p>
+      <div class="actions">
+        <button id="restoreContinue">Continua</button>
+        <button id="restoreDiscard" class="btn-secondary">Annulla e riparti</button>
+      </div>
+    </div>
+  </div>
+
   <div class="page-signature">by LG</div>
 
   <script>
@@ -288,6 +284,7 @@
     const PIN_HASH='827703960df0ea495388fe2489d96f090701230416c9312be26d8b3a5e5d06fe'; // hash(salt+5822)
     let pinFailCount=0, pinLockedUntil=0, teacherUnlocked=false;
 
+    /* ======= DOMANDE / PATTERN ======= */
     const questions = [
       { question: "Scrivi la formula e la reazione di sintesi dell'ossido ferrico:", answer: "2Fe⁺³+3O⁻²→Fe₂O₃" },
       { question: "Come si chiama NaOH in nomenclatura tradizionale?", answer: "IDROSSIDO DI SODIO" },
@@ -300,7 +297,6 @@
       { question: "Scrivi la formula e la reazione di sintesi dell'acido bromico:", answer: "2Br⁺⁵+5O⁻²→Br₂O₅+H₂O→H₂Br₂O₆→2HBrO₃" },
       { question: "Come si chiama I₂O₅ in nomenclatura tradizionale?", answer: "ANIDRIDE IODICA" }
     ];
-
     const synthesisPatterns = {
       0: ['coef','slot','+','coef','slot','→','slot'],
       2: ['coef','slot','+','coef','slot','→','slot'],
@@ -309,13 +305,14 @@
       8: ['coef','slot','+','coef','slot','→','slot','+','slot','→','slot','→','coef','slot']
     };
 
+    /* ======= UTIL ======= */
     const pad2 = n => String(n).padStart(2,'0');
     const formatDateIT = d => `${pad2(d.getDate())}/${pad2(d.getMonth()+1)}/${d.getFullYear()}`;
     const formatTime = d => `${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`;
     const msToHMS = ms => { const s=Math.floor(ms/1000); return `${pad2(Math.floor(s/3600))}:${pad2(Math.floor((s%3600)/60))}:${pad2(s%60)}`; };
     let startTime=null,endTime=null,elapsedTimer=null;
 
-    /* ===== Gestione cursore salvato negli slot (inserimento senza tastiera) ===== */
+    /* ======= CARET & BUILDER ======= */
     function caretOffsetWithin(el){
       try{
         const sel = window.getSelection();
@@ -328,20 +325,22 @@
         return pre.toString().length;
       }catch{ return null }
     }
-    function setSavedCaret(slot, idx){
-      slot.dataset.caret = String(Math.max(0, idx|0));
-    }
-    function getSavedCaret(slot){
-      const n = Number(slot.dataset.caret);
-      return Number.isFinite(n) ? Math.max(0,n) : (slot.textContent||'').length;
+    function setSavedCaret(slot, idx){ slot.dataset.caret = String(Math.max(0, idx|0)); }
+    function getSavedCaret(slot){ const n = Number(slot.dataset.caret); return Number.isFinite(n) ? Math.max(0,n) : (slot.textContent||'').length; }
+
+    const getSlotsInBuilder = b => Array.from(b.querySelectorAll('.slot'));
+    const getActiveSlot = b => b.querySelector('.slot.active')||getSlotsInBuilder(b)[0]||null;
+
+    function setActiveSlot(s,preserveCaret){
+      const b=s.closest('.builder-wrap');
+      getSlotsInBuilder(b).forEach(x=>x.classList.remove('active'));
+      s.classList.add('active');
+      if(!preserveCaret){
+        const off = caretOffsetWithin(s);
+        setSavedCaret(s, off ?? (s.textContent||'').length);
+      }
     }
 
-    function ensureCaretInSlot(slot){const sel=window.getSelection();if(!sel||sel.rangeCount===0||!slot.contains(sel.anchorNode))placeCaretAtEnd(slot)}
-    function placeCaretAtEnd(el){el.focus();const r=document.createRange();r.selectNodeContents(el);r.collapse(false);const s=window.getSelection();s.removeAllRanges();s.addRange(r)}
-    function setCaret(node,offset){const r=document.createRange();r.setStart(node,offset);r.collapse(true);const s=window.getSelection();s.removeAllRanges();s.addRange(r)}
-    function previousTextPosition(slot,node){let c=node;while(c&&c!==slot){if(c.previousSibling){c=c.previousSibling;while(c&&c.lastChild)c=c.lastChild; if(c&&c.nodeType===Node.TEXT_NODE){return{node:c,offset:c.nodeValue.length}}}else c=c.parentNode}return null}
-
-    /* Inserimento: usa offset salvato (niente focus tastiera) */
     function insertAtSavedCaret(sym, wrap){
       const s=getActiveSlot(wrap)||getSlotsInBuilder(wrap)[0]; if(!s) return;
       const text = s.textContent || '';
@@ -349,6 +348,7 @@
       s.textContent = text.slice(0,i) + sym + text.slice(i);
       setSavedCaret(s, i + sym.length);
       s.classList.remove('empty');
+      autosave();
     }
     function softBackspace(wrap){
       const s=getActiveSlot(wrap); if(!s) return;
@@ -358,51 +358,29 @@
       s.textContent = t.slice(0,i-1) + t.slice(i);
       setSavedCaret(s, Math.max(0,i-1));
       if((s.textContent||'').trim()==='') s.classList.add('empty');
+      autosave();
     }
-
-    /* Helpers builder */
-    const getSlotsInBuilder = b => Array.from(b.querySelectorAll('.slot'));
-    const getActiveSlot = b => b.querySelector('.slot.active')||getSlotsInBuilder(b)[0]||null;
-
-    function setActiveSlot(s,preserveCaret){
-      const b=s.closest('.builder-wrap');
-      getSlotsInBuilder(b).forEach(x=>x.classList.remove('active'));
-      s.classList.add('active');
-      if(!preserveCaret){ /* quando lo studente tocca, acquisisci caret reale */
-        const off = caretOffsetWithin(s);
-        setSavedCaret(s, off ?? (s.textContent||'').length);
-      }
-    }
-
-    function insertAtCaret(text,b){const s=getActiveSlot(b);if(!s)return;ensureCaretInSlot(s);const sel=window.getSelection();let r=sel.getRangeAt(0);
-      if(r.startContainer.nodeType!==Node.TEXT_NODE){const tn=document.createTextNode('');r.insertNode(tn);setCaret(tn,tn.length);r=sel.getRangeAt(0)}
-      if(!r.collapsed)r.deleteContents();const node=r.startContainer,pos=r.startOffset;const chars=Array.from(node.nodeValue||''),add=Array.from(text);
-      chars.splice(pos,0,...add);node.nodeValue=chars.join('');setCaret(node,pos+add.length); setSavedCaret(s, pos+add.length); if(s.textContent.trim().length>0)s.classList.remove('empty')}
-
-    function backspaceAtCaret(b){const s=getActiveSlot(b);if(!s)return;ensureCaretInSlot(s);const sel=window.getSelection();let r=sel.getRangeAt(0);
-      if(!r.collapsed){r.deleteContents();const off=caretOffsetWithin(s);setSavedCaret(s, off ?? (s.textContent||'').length);return;}
-      if(r.startContainer.nodeType!==Node.TEXT_NODE){const prev=previousTextPosition(s,r.startContainer);
-        if(prev){const t=Array.from(prev.node.nodeValue);if(t.length>0){t.pop();prev.node.nodeValue=t.join('');setCaret(prev.node,t.length);setSavedCaret(s,t.length)}}}
-      else {const node=r.startContainer,pos=r.startOffset;if(pos>0){const t=Array.from(node.nodeValue);t.splice(pos-1,1);node.nodeValue=t.join('');setCaret(node,pos-1);setSavedCaret(s,pos-1)}
-        else {const prev=previousTextPosition(s,node);if(prev){const t=Array.from(prev.node.nodeValue);if(t.length>0){t.pop();prev.node.nodeValue=t.join('');setCaret(prev.node,t.length);setSavedCaret(s,t.length)}}}}
-      if(s.textContent.trim().length===0)s.classList.add('empty')}
-
-    function moveActive(b,dir){const slots=getSlotsInBuilder(b);if(!slots.length)return;const c=getActiveSlot(b)||slots[0];const i=slots.indexOf(c);const n=slots[Math.min(Math.max(i+dir,0),slots.length-1)];
-      if(n){ getSlotsInBuilder(b).forEach(x=>x.classList.remove('active')); n.classList.add('active'); /* non focus: caret rimane quello salvato o va a fine */
+    function moveActive(b,dir){
+      const slots=getSlotsInBuilder(b); if(!slots.length)return;
+      const c=getActiveSlot(b)||slots[0]; const i=slots.indexOf(c);
+      const n=slots[Math.min(Math.max(i+dir,0),slots.length-1)];
+      if(n){ getSlotsInBuilder(b).forEach(x=>x.classList.remove('active')); n.classList.add('active');
         if(n.dataset.caret===undefined) setSavedCaret(n,(n.textContent||'').length);
       }
     }
-    function clearActiveSlot(b){const s=getActiveSlot(b);if(!s)return;s.textContent='';s.classList.add('empty');setSavedCaret(s,0)}
-    function clearAllSlots(b){getSlotsInBuilder(b).forEach(s=>{s.textContent='';s.classList.add('empty');setSavedCaret(s,0)})}
+    function clearActiveSlot(b){const s=getActiveSlot(b);if(!s)return;s.textContent='';s.classList.add('empty');setSavedCaret(s,0);autosave()}
+    function clearAllSlots(b){getSlotsInBuilder(b).forEach(s=>{s.textContent='';s.classList.add('empty');setSavedCaret(s,0)});autosave()}
+
     function readBuilderValue(b){const parts=[];b.querySelectorAll('.formula > span').forEach(el=>{if(el.classList.contains('pair')){el.querySelectorAll('.slot').forEach(s=>parts.push(s.textContent))}else{parts.push(el.textContent)}});return parts.join('')}
+    function readBuilderSlots(b){ return getSlotsInBuilder(b).map(s=>s.textContent||''); }
+    function fillBuilderSlots(b, arr){ const slots=getSlotsInBuilder(b); slots.forEach((s,i)=>{ s.textContent = (arr && arr[i]) ? arr[i] : ''; if(s.textContent.trim()) s.classList.remove('empty'); else s.classList.add('empty'); setSavedCaret(s, (s.textContent||'').length); }); }
 
     function createSlot({coef=false}) {
       const slot = document.createElement('span');
       slot.className = 'slot empty' + (coef ? ' coef' : '');
       slot.contentEditable = 'true';
       slot.spellcheck = false;
-      /* Salva l'offset cursore quando l'utente interagisce */
-      const upd = ()=>{ const off = caretOffsetWithin(slot); if(off!==null) setSavedCaret(slot, off) };
+      const upd = ()=>{ const off = caretOffsetWithin(slot); if(off!==null) setSavedCaret(slot, off); autosave(); };
       slot.addEventListener('focus', () => { setActiveSlot(slot, true); upd(); });
       slot.addEventListener('click', () => { setActiveSlot(slot, true); upd(); });
       slot.addEventListener('keyup', upd);
@@ -410,19 +388,17 @@
       slot.addEventListener('input', () => {
         if (slot.textContent.trim().length > 0) slot.classList.remove('empty');
         else slot.classList.add('empty');
-        /* dopo input metti caret a fine come fallback */
         const off = caretOffsetWithin(slot);
         setSavedCaret(slot, off ?? (slot.textContent||'').length);
+        autosave();
       });
       return slot;
     }
 
-    /* ===== Console compatta (due livelli) ===== */
     function createTwoLevelConsole(wrap){
       const dock = document.createElement('div');
       dock.className = 'kbd-dock';
 
-      // Sezione 1: Elementi + Coefficienti + Tool
       const sec1 = document.createElement('section');
       sec1.className = 'kbd-section';
       const t1 = document.createElement('div');
@@ -456,7 +432,6 @@
       sec1.appendChild(rows1);
       dock.appendChild(sec1);
 
-      // Sezione 2: N.O. + Indici
       const sec2 = document.createElement('section');
       sec2.className = 'kbd-section';
       const t2 = document.createElement('div');
@@ -499,7 +474,6 @@
           pair.className = 'pair';
           const coefSlot = createSlot({ coef:true });
           const normSlot = createSlot({ coef:false });
-          /* caret iniziale alla fine per entrambi */
           setSavedCaret(coefSlot, 0);
           setSavedCaret(normSlot, 0);
           pair.appendChild(coefSlot);
@@ -526,11 +500,10 @@
         }
       }
 
-      // Console compatta a due livelli
       const dock = createTwoLevelConsole(wrap);
       wrap.appendChild(dock);
 
-      // Toggle mini-tabelle (solo mobile)
+      /* Pannello mobile con mini-tabelle */
       const mt = document.createElement('div');
       mt.className = 'mini-toggle';
       mt.innerHTML = '<button type="button" class="mini-btn" aria-expanded="false">Mostra mini-tabelle 📘</button>';
@@ -553,7 +526,17 @@
             <tr><td>3 N.O.</td><td>+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica</td></tr>
             <tr><td>4 N.O.</td><td>+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica</td></tr>
           </tbody>
-        </table>`;
+        </table>
+        <!-- >>> NUOVA MINI TABELLA MOBILE: Idruri / Idracidi -->
+        <table class="mini-table" aria-label="Idruri e Idracidi" style="margin-top:8px">
+          <thead><tr><th>Categoria</th><th>Nome</th></tr></thead>
+          <tbody>
+            <tr><td>Idruri</td><td>Nomenclatura IUPAC</td></tr>
+            <tr><td>Idracidi</td><td>___idrico</td></tr>
+          </tbody>
+        </table>
+        <!-- <<< FINE NUOVA MINI TABELLA -->
+      `;
       mt.querySelector('button').addEventListener('click',(ev)=>{
         const btn = ev.currentTarget;
         const open = panel.classList.toggle('open');
@@ -566,7 +549,7 @@
       return wrap;
     }
 
-    /* ===== Valutazione / PDF / PIN: invariati ===== */
+    /* ======= VALUTAZIONE / NORMALIZZAZIONI ======= */
     function levenshtein(a,b){const m=[];for(let i=0;i<=b.length;i++)m[i]=[i];for(let j=0;j<=a.length;j++)m[0][j]=j;for(let i=1;i<=b.length;i++){for(let j=1;j<=a.length;j++){m[i][j]=b.charAt(i-1)===a.charAt(j-1)?m[i-1][j-1]:Math.min(m[i-1][j-1]+1,m[i][j-1]+1,m[i-1][j]+1)}}return m[b.length][a.length]}
     const RX_STRIP_EMPTY = /[\s+\u2192]/g;
     const normForEmpty = str => (str || '').replace(RX_STRIP_EMPTY, '').trim();
@@ -579,7 +562,7 @@
       let html = '<ul>';
       results.forEach(e=>{
         const dispPoint = (Math.round(e.point*100)/100).toFixed(2);
-        html+=`<li class="${e.color}">
+        html+=`<li>
           <strong>Domanda:</strong> ${e.question}<br>
           <strong>Tua risposta:</strong> ${e.yourAnswer || '<em>(vuota)</em>'}<br>
           <strong>Risposta corretta:</strong> ${e.correctAnswer}<br>
@@ -590,6 +573,7 @@
       tDiv.innerHTML = html;
     }
 
+    /* ======= PDF DOCENTE ======= */
     function exportPdf(){
       if(!teacherUnlocked){ alert('Area docenti bloccata. Inserire il PIN.'); return; }
       const { jsPDF } = window.jspdf;
@@ -601,7 +585,7 @@
       function drawArrowInline(x,y,size=10){ const shaft=size*0.75, head=size*0.30; doc.setLineWidth(0.5); doc.line(x, y-1, x+shaft, y-1); const hx=x+shaft, hy=y-1; doc.line(hx,hy,hx+head,hy); doc.line(hx+head,hy,hx+head-2.4,hy-1.9); doc.line(hx+head,hy,hx+head-2.4,hy+1.9); return head + shaft }
       function drawGreaterEqualInline(x,y,size=10){ const w=size*0.52; doc.setLineWidth(0.5); doc.line(x, y-1.2, x+w, y-1.2); doc.line(x+w, y-1.2, x+w-3, y-1.2-2); doc.line(x+w, y-1.2, x+w-3, y-1.2+2); doc.line(x, y+1.2, x+w, y+1.2); return w + 1.2 }
       const SUP_MAP = { '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁺':'+','⁻':'-' };
-      const SUB_MAP = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','⁷':'7','⁸':'8','⁹':'9' };
+      const SUB_MAP = { '₀':'0','₁':'1','₂':'2','₃':'3','⁴':'4','₅':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9' };
       function chemToTokens(text){
         const tokens=[]; let i=0; text=String(text||'');
         while(i<text.length){
@@ -655,6 +639,7 @@
         return cy;
       }
 
+      /* risultati + domande */
       doc.setFontSize(14); doc.text('Verifica di Nomenclatura dei composti inorganici - Prima parte', 10, 10);
       doc.setFontSize(12);
       const dateStr=document.getElementById('date').value;
@@ -684,10 +669,98 @@
         doc.text(e.point ? `Punteggio: ${e.point}` : `Punteggio: —`, 10, y); y += blockGap; if (y > pageH - 20) { doc.addPage(); addSignature(); y = 12; }
       });
 
+      /* ===== Mini-tabelle: pagina finale (Ossidi, Anidridi, Idruri/Idracidi) ===== */
+      doc.addPage(); addSignature();
+      y = 14;
+
+      function drawTable(titleLeft, titleRight, rows){
+        const x = 10, w = pageW - 20, padX = 2;
+        const col1W = 40;
+        const col2W = w - col1W;
+
+        const headerFont = 11;
+        const cellFont   = 9;
+        const supFont    = 6.8;
+        const headerH    = 8.2;
+        const lineH      = 4.4;
+        const cellPadY   = 1.6;
+
+        doc.setFontSize(headerFont);
+        doc.setFillColor(230, 247, 230);
+        doc.setDrawColor(166, 219, 166);
+        doc.rect(x, y, col1W, headerH, 'F'); doc.rect(x+col1W, y, col2W, headerH, 'F');
+        doc.rect(x, y, col1W, headerH); doc.rect(x+col1W, y, col2W, headerH);
+        doc.setTextColor(0,95,0);
+        doc.text(titleLeft, x+padX, y+headerH-2.2);
+        doc.text(titleRight, x+col1W+padX, y+headerH-2.2);
+        y += headerH; if (y > pageH - 25) { doc.addPage(); addSignature(); y = 12; }
+
+        function renderTokenLines(arrLines, startX) {
+          let yy = y + cellPadY + (lineH - 1.0);
+          arrLines.forEach(line=>{
+            let cx = startX;
+            line.forEach(tok=>{
+              if (tok.type==='ge')      { cx += drawGreaterEqualInline(cx, yy, cellFont); }
+              else if (tok.type==='arrow'){ cx += drawArrowInline(cx, yy, cellFont); }
+              else if (tok.type==='base'){ doc.setFontSize(cellFont); doc.text(tok.val, cx, yy); cx += textWidthAt(tok.val, cellFont); }
+              else if (tok.type==='sup'){ doc.setFontSize(supFont);  doc.text(tok.val,cx,yy-(cellFont*0.35)); cx+=textWidthAt(tok.val,supFont); }
+              else if (tok.type==='sub'){ doc.setFontSize(supFont);  doc.text(tok.val,cx,yy+(cellFont*0.25)); cx+=textWidthAt(tok.val,supFont); }
+            });
+            yy += lineH;
+          });
+        }
+
+        doc.setTextColor(0,0,0);
+        doc.setFontSize(cellFont);
+        rows.forEach(r=>{
+          const c1 = String(r[0]); const c2 = String(r[1]);
+          const t1 = chemToTokens(c1);
+          const t2 = chemToTokens(c2);
+          const lines1 = wrapTokensToLines(t1, col1W - padX*2, cellFont);
+          const lines2 = wrapTokensToLines(t2, col2W - padX*2, cellFont);
+          const numLines = Math.max(lines1.length, lines2.length);
+          const cellH = (lineH * numLines) + cellPadY*2;
+
+          doc.setDrawColor(166,219,166);
+          doc.rect(x, y, col1W, cellH);
+          doc.rect(x+col1W, y, col2W, cellH);
+
+          renderTokenLines(lines1, x + padX);
+          renderTokenLines(lines2, x + col1W + padX);
+
+          y += cellH; if (y > pageH - 25) { doc.addPage(); addSignature(); y = 12; }
+        });
+
+        y += 3;
+      }
+
+      const tblOssidi = [
+        ['N.O.', 'nome del Me'],
+        ['2 N.O.', 'n.o. + basso → suffisso oso; n.o. + alto → suffisso ico'],
+        ['≥ 3 N.O.', 'n.o. + basso → suffisso oso; n.o. successivo a quello + basso → suffisso ico; n.o. superiori → notazione di Stock']
+      ];
+      drawTable('Ossidi','Nome', tblOssidi);
+
+      const tblAnidridi = [
+        ['2 N.O.', 'n.o. + basso → suffisso osa; n.o. + alto → suffisso ica'],
+        ['3 N.O.', '+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica'],
+        ['4 N.O.', '+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica']
+      ];
+      drawTable('Anidridi','Nome', tblAnidridi);
+
+      /* >>> NUOVA TABELLA PDF: Idruri / Idracidi */
+      const tblIdruriIdracidi = [
+        ['Idruri',   'Nomenclatura IUPAC'],
+        ['Idracidi', '___idrico']
+      ];
+      drawTable('Categoria','Nome', tblIdruriIdracidi);
+      /* <<< FINE NUOVA TABELLA */
+
       addSignature();
       doc.save(`Verifica_${(nameFull.split(' (')[0] || 'Studente').replaceAll(' ','_')}.pdf`);
     }
 
+    /* ======= PIN ======= */
     async function sha256Hex(str){
       const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
       return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
@@ -730,6 +803,94 @@
       }
     }
 
+    /* ======= STATO & AUTOSAVE ======= */
+    const LS_KEY = 'verificaState_v1';
+
+    function collectState(){
+      const state = { phase:'started', student:{}, startTime:null, answers:{} };
+      state.student.name = document.getElementById('name')?.value || '';
+      state.student.surname = document.getElementById('surname')?.value || '';
+      state.student.class = document.getElementById('class')?.value || '';
+      state.student.date = document.getElementById('date')?.value || '';
+      state.startTime = startTime ? startTime.toISOString() : null;
+
+      questions.forEach((q,i)=>{
+        if(synthesisPatterns[i]){
+          const b = document.getElementById('builder_'+i);
+          if(b){ state.answers[i] = { type:'synth', slots: readBuilderSlots(b) }; }
+        }else{
+          const v = (document.getElementById('q'+i)?.value)||'';
+          state.answers[i] = { type:'text', value: v };
+        }
+      });
+      return state;
+    }
+    function saveState(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(collectState())); }catch{} }
+    const autosave = throttle(saveState, 300);
+    function throttle(fn, wait){
+      let t=0, pending=false;
+      return function(){ const now=Date.now();
+        if(!t || now-t>=wait){ t=now; fn(); }
+        else if(!pending){ pending=true; setTimeout(()=>{ pending=false; t=Date.now(); fn(); }, t+wait-now); }
+      }
+    }
+    function clearState(){ try{ localStorage.removeItem(LS_KEY); }catch{} }
+    function hasSavedState(){
+      try{ const s=localStorage.getItem(LS_KEY); if(!s) return null; return JSON.parse(s); }catch{ return null }
+    }
+
+    function restoreFromState(state){
+      document.getElementById('preData').style.display='none';
+      document.getElementById('examHeader').style.display='flex';
+
+      const n = state.student.name || '', s = state.student.surname || '', c = state.student.class || '', dateStr = state.student.date || formatDateIT(new Date());
+      document.getElementById('name').value = n;
+      document.getElementById('surname').value = s;
+      document.getElementById('class').value = c;
+      document.getElementById('date').value = dateStr;
+
+      document.getElementById('hdrStudent').textContent=`${n} ${s} (${c})`;
+      document.getElementById('hdrDate').textContent=`Data: ${dateStr}`;
+
+      startTime = state.startTime ? new Date(state.startTime) : new Date();
+      document.getElementById('hdrStart').textContent=`Inizio: ${formatTime(startTime)}`;
+      document.getElementById('hdrElapsed').textContent=`Trascorso: 00:00:00`;
+      if(elapsedTimer) clearInterval(elapsedTimer);
+      elapsedTimer=setInterval(()=>{const now=new Date();const diff=now-startTime;document.getElementById('hdrElapsed').textContent=`Trascorso: ${msToHMS(diff)}`;},1000);
+
+      document.getElementById('quizRow').style.display = 'flex';
+      document.getElementById('quizSide').style.display = (window.matchMedia('(min-width:1025px)').matches ? 'block' : 'none');
+
+      document.getElementById('ox-row1').textContent = "nome del Me";
+      document.getElementById('ox-row2').textContent = "n.o. + basso → suffisso oso; n.o. + alto → suffisso ico";
+      document.getElementById('ox-row3').textContent = "n.o. + basso → suffisso oso; n.o. successivo a quello + basso → suffisso ico; n.o. superiori → notazione di Stock";
+      document.getElementById('an-row2').textContent = "n.o. + basso → suffisso osa; n.o. + alto → suffisso ica";
+      document.getElementById('an-row3').textContent = "+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica";
+      document.getElementById('an-row4').textContent = "+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica";
+
+      document.getElementById('questions').style.display='block';
+      const container=document.getElementById('questionsContainer'); container.innerHTML='';
+      questions.forEach((q,i)=>{
+        const block=document.createElement('div'); block.className='question-block';
+        const label=document.createElement('div'); label.className='q-title'; label.innerHTML=(i+1)+". "+q.question; block.appendChild(label);
+
+        if(synthesisPatterns[i]){
+          const builder=createBuilderFromPattern(synthesisPatterns[i],i); builder.id='builder_'+i; block.appendChild(builder);
+          const saved = state.answers?.[i];
+          if(saved && saved.type==='synth'){ fillBuilderSlots(builder, saved.slots); }
+        }else{
+          const input=document.createElement('input'); input.type='text'; input.id='q'+i; input.placeholder='Risposta';
+          input.className='answer-field'; input.maxLength=30;
+          input.addEventListener('input',()=>{input.value=input.value.toUpperCase(); autosave();});
+          const saved = state.answers?.[i];
+          if(saved && saved.type==='text'){ input.value = saved.value || ''; }
+          block.appendChild(input);
+        }
+        container.appendChild(block);
+      });
+    }
+
+    /* ======= FLUSSO VERIFICA ======= */
     function startQuiz(){
       const n=document.getElementById('name').value.trim(),
             s=document.getElementById('surname').value.trim(),
@@ -737,7 +898,6 @@
             dateStr=document.getElementById('date').value.trim();
       if(!n||!s||!c){alert("Compila tutti i campi (nome, cognome, classe) per iniziare.");return;}
 
-      // Nascondi tutto ciò che è area docenti
       document.getElementById('teacherPanel').style.display='none';
       document.getElementById('teacherCta').style.display='none';
       teacherUnlocked=false; pinFailCount=0; pinLockedUntil=0;
@@ -755,7 +915,6 @@
       document.getElementById('quizRow').style.display = 'flex';
       document.getElementById('quizSide').style.display = (window.matchMedia('(min-width:1025px)').matches ? 'block' : 'none');
 
-      // Sidebar contenuti
       document.getElementById('ox-row1').textContent = "nome del Me";
       document.getElementById('ox-row2').textContent = "n.o. + basso → suffisso oso; n.o. + alto → suffisso ico";
       document.getElementById('ox-row3').textContent = "n.o. + basso → suffisso oso; n.o. successivo a quello + basso → suffisso ico; n.o. superiori → notazione di Stock";
@@ -763,7 +922,6 @@
       document.getElementById('an-row3').textContent = "+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica";
       document.getElementById('an-row4').textContent = "+1 → ipo___osa; +3 o +4 → suffisso osa; +5 o +6 → suffisso ica; +7 → per___ica";
 
-      // Domande
       document.getElementById('questions').style.display='block';
       const container=document.getElementById('questionsContainer'); container.innerHTML='';
       questions.forEach((q,i)=>{
@@ -772,18 +930,23 @@
         if(synthesisPatterns[i]){const builder=createBuilderFromPattern(synthesisPatterns[i],i); builder.id='builder_'+i; block.appendChild(builder);}
         else {
           const input=document.createElement('input'); input.type='text'; input.id='q'+i; input.placeholder='Risposta';
-          input.className='answer-field'; input.maxLength=30; /* richiesto: 30 */
-          input.addEventListener('input',()=>{input.value=input.value.toUpperCase()});
+          input.className='answer-field'; input.maxLength=30;
+          input.addEventListener('input',()=>{input.value=input.value.toUpperCase(); autosave();});
           block.appendChild(input);
         }
         container.appendChild(block);
       });
 
-      const firstInput = container.querySelector('input.answer-field, .slot');
-      if(firstInput){ firstInput.focus() }
+      autosave();
+      ['name','surname','class'].forEach(id=>{
+        const el=document.getElementById(id);
+        el?.addEventListener('input', autosave);
+      });
     }
 
     function submitQuiz(){
+      if(!confirm("Vuoi davvero consegnare la verifica? Dopo l’invio non potrai più modificarla.")) return;
+
       const nameFull=document.getElementById('hdrStudent').textContent;
       const rawNameMatch=/^(.*?) \(/.exec(nameFull);
       const studentName=rawNameMatch?rawNameMatch[1]:nameFull;
@@ -818,10 +981,6 @@
         }
         totalScore+=point;
 
-        let colorClass='bad';
-        if(point>=maxVal){ colorClass='good'; }
-        else if(point>=maxVal/2){ colorClass='mid'; }
-
         results.push({ question:q.question, yourAnswer:userAnswer, correctAnswer:q.answer, point:point, max:maxVal });
       });
 
@@ -838,12 +997,10 @@
       if(finalScore<6) document.body.style.backgroundColor='#ffefef';
       document.getElementById('result').innerHTML=res;
 
-      // Fine tentativo: nascondi UI quiz
       document.getElementById('examHeader').style.display = 'none';
       document.getElementById('quizSide').style.display = 'none';
       document.getElementById('questions').style.display='none';
 
-      // Riepilogo studente
       const studentDiv = document.getElementById('studentList');
       let sHtml = '<h3>Le tue risposte</h3><ul>';
       results.forEach(e=>{
@@ -852,11 +1009,11 @@
       sHtml+="</ul>";
       studentDiv.innerHTML = sHtml;
 
-      // Mostra CTA PIN
       document.getElementById('teacherCta').style.display='block';
       renderTeacherDetails(results);
-
       document.getElementById('exportPdfBtn').addEventListener('click', exportPdf, { once:true });
+
+      clearState();
       document.getElementById('result').scrollIntoView({behavior:'smooth'});
     }
 
@@ -876,10 +1033,11 @@
       document.getElementById('examHeader').style.display='none';
       document.getElementById('quizRow').style.display='none';
       document.getElementById('quizSide').style.display='none';
+      clearState();
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    /* Aggiorna caret salvato quando cambia la selezione dentro uno slot attivo */
+    /* ======= EVENTI GLOBALI ======= */
     document.addEventListener('selectionchange', ()=>{
       const active = document.querySelector('.slot.active');
       if(active){
@@ -891,6 +1049,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const dateEl = document.getElementById('date');
       if (dateEl) dateEl.value = formatDateIT(new Date());
+
       document.getElementById('teacherPanel').style.display='none';
       document.getElementById('teacherCta').style.display='none';
 
@@ -901,6 +1060,19 @@
       document.getElementById('openPinBtn').addEventListener('click', openPinModal);
       document.getElementById('pinLoginBtn').addEventListener('click', verifyPin);
       document.getElementById('pinInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); verifyPin(); } });
+
+      const saved = hasSavedState();
+      if(saved && saved.phase==='started'){
+        document.getElementById('restoreModal').classList.add('open');
+        document.getElementById('restoreContinue').onclick = ()=>{
+          document.getElementById('restoreModal').classList.remove('open');
+          restoreFromState(saved);
+        };
+        document.getElementById('restoreDiscard').onclick = ()=>{
+          document.getElementById('restoreModal').classList.remove('open');
+          clearState();
+        };
+      }
     });
   </script>
 </body>
